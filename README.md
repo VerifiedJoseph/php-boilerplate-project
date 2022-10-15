@@ -8,7 +8,7 @@ Boilerplate repository for php 8.1 projects
 
 ## Requirements
 
-- PHP >= 8.0
+- PHP >= 8.1
 - Composer
 - PHP Extensions:
 
