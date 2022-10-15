@@ -1,0 +1,70 @@
+name: Code quality
+
+on:
+  pull_request:
+    paths:
+      - "**.php"
+      - "phpcs.xml"
+      - ".github/workflows/code-quality.yml"
+  push:
+    branches: [main]
+    paths:
+      - "**.php"
+      - "phpcs.xml"
+      - ".github/workflows/code-quality.yml"
+
+jobs:
+  phpstan:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0'
+
+    - name: "Validate composer.json and composer.lock"
+      run: "composer validate --strict"
+
+    - name: Install dependencies with composer
+      run: composer install --prefer-dist
+
+    - name: Run PHPStan
+      run: ./vendor/bin/phpstan analyse
+
+  phpcs:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0'
+        tools: cs2pr
+
+    - name: Install dependencies with composer
+      run: composer install --prefer-dist
+
+    - name: Run phpcs
+      run: ./vendor/bin/phpcs . --report=checkstyle | cs2pr
+
+  php-cs-fixer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+
+      - name: Install dependencies with composer
+        run: composer install --prefer-dist
+
+      - name: Run php-cs-fixer
+        run:  ./vendor/bin/php-cs-fixer fix --dry-run
