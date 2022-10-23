@@ -15,6 +15,7 @@ on:
 
 jobs:
   phpstan:
+    name: PHPStan
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
@@ -35,6 +36,7 @@ jobs:
       run: ./vendor/bin/phpstan analyse
 
   phpcs:
+    name: PHP_CodeSniffer
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
@@ -53,6 +55,7 @@ jobs:
       run: ./vendor/bin/phpcs . --report=checkstyle | cs2pr
 
   php-cs-fixer:
+    name: PHP CS Fixer
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
