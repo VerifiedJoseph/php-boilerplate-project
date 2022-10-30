@@ -4,6 +4,9 @@
 # php-cs-fixer
 .php-cs-fixer.cache
 
+# phpunit
+.phpunit.result.cache
+
 # Windows thumbnail cache files
 Thumbs.db
 ehthumbs.db
