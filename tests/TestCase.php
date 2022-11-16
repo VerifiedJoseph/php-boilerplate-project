@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests;
+
 use PHPUnit\Framework\TestCase as BaseTestCase;
 
 /**
@@ -16,7 +18,7 @@ abstract class TestCase extends BaseTestCase
         $contents = file_get_contents($fixturePath);
 
         if ($contents === false) {
-            throw new RuntimeException(sprintf('Unable to load fixture: %s', $fixturePath));
+            throw new \RuntimeException(sprintf('Unable to load fixture: %s', $fixturePath));
         }
 
         return $contents;
