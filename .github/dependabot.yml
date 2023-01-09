@@ -8,3 +8,15 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "/.devcontainer/docker/workspace"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "/.devcontainer/docker/nginx"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "/.devcontainer/docker/php"
+    schedule:
+      interval: "weekly"
