@@ -1,0 +1,24 @@
+services:
+    workspace:
+        build:
+            context: ./docker/workspace
+        tty: true
+        volumes:
+            - ../:/var/www
+        working_dir: /var/www
+
+    nginx:
+        build: ./docker/nginx
+        ports:
+            - "${IP_ADDRESS}80:80"
+        volumes:
+            - ./docker/nginx/config:/etc/nginx/conf.d
+            - ../.docker/nginx/log:/var/log/nginx
+            - ../:/var/www
+
+    php:
+        build:
+            context: ./docker/php
+        volumes:
+            - ../:/var/www
+        working_dir: /var/www
