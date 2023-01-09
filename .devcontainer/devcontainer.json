@@ -22,5 +22,5 @@
         "bmewburn.vscode-intelephense-client",
         "recca0120.vscode-phpunit"
     ],
-    "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+    "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}"
 }
