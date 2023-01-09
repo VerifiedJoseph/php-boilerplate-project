@@ -21,3 +21,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+.docker/nginx/log/access.log
+.docker/nginx/log/error.log
